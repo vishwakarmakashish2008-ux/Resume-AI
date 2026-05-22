@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sign In - ResumeAI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-surface": "#dde2f6",
+                        "on-surface-variant": "#c7c4d7",
+                        "primary-fixed": "#e1e0ff",
+                        "surface": "#0d1321",
+                        "on-secondary": "#3c0091",
+                        "secondary-container": "#571bc1",
+                        "on-secondary-container": "#c4abff",
+                        "error-container": "#93000a",
+                        "on-primary": "#1000a9",
+                        "on-surface": "#dde2f6",
+                        "on-tertiary-fixed-variant": "#005137",
+                        "primary-fixed-dim": "#c0c1ff",
+                        "surface-variant": "#2f3444",
+                        "on-secondary-fixed": "#23005c",
+                        "on-error-container": "#ffdad6",
+                        "on-tertiary-fixed": "#002114",
+                        "on-tertiary-container": "#003120",
+                        "on-primary-container": "#0d0096",
+                        "surface-container-highest": "#2f3444",
+                        "primary-container": "#8083ff",
+                        "on-primary-fixed": "#07006c",
+                        "surface-tint": "#c0c1ff",
+                        "tertiary-fixed-dim": "#45dfa4",
+                        "on-tertiary": "#003825",
+                        "surface-bright": "#333949",
+                        "tertiary-container": "#00a574",
+                        "surface-container": "#1a1f2e",
+                        "surface-container-high": "#242a39",
+                        "surface-dim": "#0d1321",
+                        "outline": "#908fa0",
+                        "secondary": "#d0bcff",
+                        "background": "#0d1321",
+                        "on-secondary-fixed-variant": "#5516be",
+                        "surface-container-low": "#161b2a",
+                        "error": "#ffb4ab",
+                        "surface-container-lowest": "#080e1c",
+                        "inverse-on-surface": "#2b3040",
+                        "on-primary-fixed-variant": "#2f2ebe",
+                        "inverse-primary": "#494bd6",
+                        "tertiary": "#45dfa4",
+                        "secondary-fixed": "#e9ddff",
+                        "on-error": "#690005",
+                        "on-background": "#dde2f6",
+                        "primary": "#c0c1ff",
+                        "secondary-fixed-dim": "#d0bcff",
+                        "outline-variant": "#464554",
+                        "tertiary-fixed": "#68fcbf"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #050a18;
+            font-family: 'Inter', sans-serif;
+        }
+        .glass-card {
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .gradient-orb {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            filter: blur(80px);
+            z-index: 0;
+            opacity: 0.4;
+        }
+        .grid-overlay {
+            background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        .primary-gradient {
+            background: linear-gradient(135deg, #c0c1ff 0%, #d0bcff 100%);
+        }
+        .glow-shadow {
+            box-shadow: 0 0 30px rgba(192, 193, 255, 0.15);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col items-center justify-center overflow-hidden">
+<!-- Background Elements -->
+<div class="fixed inset-0 grid-overlay z-0"></div>
+<div class="gradient-orb bg-primary top-[-10%] left-[-10%]"></div>
+<div class="gradient-orb bg-secondary bottom-[-10%] right-[-10%]"></div>
+<div class="gradient-orb bg-tertiary top-[40%] right-[-5%]"></div>
+<!-- Main Content Shell -->
+<main class="relative z-10 w-full max-w-md px-6 py-12">
+<!-- Center Login Card -->
+<div class="glass-card rounded-2xl p-8 md:p-10 shadow-2xl">
+<!-- Logo Section -->
+<div class="flex flex-col items-center mb-10">
+<div class="relative w-16 h-16 rounded-xl primary-gradient flex items-center justify-center mb-4 shadow-lg">
+<span class="material-symbols-outlined text-surface text-3xl" data-weight="fill">description</span>
+<div class="absolute -top-1 -right-1 w-6 h-6 bg-tertiary rounded-full flex items-center justify-center border-2 border-surface">
+<span class="material-symbols-outlined text-on-tertiary text-xs font-bold">check</span>
+</div>
+</div>
+<h1 class="text-3xl font-extrabold tracking-tighter text-on-surface">
+                    Resume<span class="bg-clip-text text-transparent primary-gradient">AI</span>
+</h1>
+<p class="text-on-surface-variant text-sm mt-2 font-medium tracking-tight uppercase opacity-70">Architecting Careers</p>
+</div>
+<!-- Form -->
+<form action="#" class="space-y-6" method="POST">
+<!-- Email Input -->
+<div class="space-y-2">
+<label class="text-xs font-bold uppercase tracking-widest text-on-surface-variant px-1" for="email">Email Address</label>
+<div class="relative group">
+<div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-outline-variant group-focus-within:text-primary transition-colors text-xl">mail</span>
+</div>
+<input class="block w-full pl-12 pr-4 py-4 bg-surface-container-highest border-0 rounded-xl text-on-surface placeholder:text-outline-variant focus:ring-2 focus:ring-primary/50 transition-all duration-300" id="email" name="email" placeholder="name@example.com" required="" type="email"/>
+</div>
+</div>
+<!-- Password Input -->
+<div class="space-y-2">
+<div class="flex justify-between items-center px-1">
+<label class="text-xs font-bold uppercase tracking-widest text-on-surface-variant" for="password">Password</label>
+<a class="text-xs font-bold text-primary hover:text-white transition-colors" href="#">Forgot Password?</a>
+</div>
+<div class="relative group">
+<div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-outline-variant group-focus-within:text-primary transition-colors text-xl">lock</span>
+</div>
+<input class="block w-full pl-12 pr-12 py-4 bg-surface-container-highest border-0 rounded-xl text-on-surface placeholder:text-outline-variant focus:ring-2 focus:ring-primary/50 transition-all duration-300" id="password" name="password" placeholder="••••••••" required="" type="password"/>
+<button class="absolute inset-y-0 right-0 pr-4 flex items-center text-outline-variant hover:text-on-surface transition-colors" type="button">
+<span class="material-symbols-outlined text-xl">visibility</span>
+</button>
+</div>
+</div>
+<!-- Remember Me -->
+<div class="flex items-center space-x-3 px-1">
+<input class="w-5 h-5 rounded border-0 bg-surface-container-highest text-primary focus:ring-offset-surface focus:ring-primary transition-all" id="remember" name="remember" type="checkbox"/>
+<label class="text-sm text-on-surface-variant cursor-pointer select-none" for="remember">Remember this device</label>
+</div>
+<!-- Sign In Button -->
+<button class="w-full py-4 primary-gradient text-on-primary font-bold rounded-xl glow-shadow hover:scale-[1.02] active:scale-[0.98] transition-all duration-200" type="submit">
+                    Sign In
+                </button>
+</form>
+<!-- Divider -->
+<div class="relative my-8">
+<div class="absolute inset-0 flex items-center">
+<div class="w-full border-t border-outline-variant/20"></div>
+</div>
+<div class="relative flex justify-center text-xs uppercase tracking-widest">
+<span class="bg-surface-container-low px-4 text-on-surface-variant font-bold">Or continue with</span>
+</div>
+</div>
+<!-- Social Logins -->
+<div class="grid grid-cols-2 gap-4">
+<button class="flex items-center justify-center space-x-2 py-3 bg-white/5 hover:bg-white/10 border border-white/5 rounded-xl transition-all">
+<img alt="" class="w-5 h-5" data-alt="Official Google logo with vibrant primary colors and minimalist clean design" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0LXrd5V44jLaUBtiIpc2sZiMRQxzpH6OHAHTwt0XCoqFnVdbx45aBwLaXZmlc4e_tRR2YNaZ37n-QzeWFpYS6Fyq0acIvmkNNcTAsxVrCF1W1Lmy_zG_JM6QwTNA01smPrsD18pwL-4CtsNKyKG0_S-PmZOAasV_Y-Rn__kervxBspN0panJoPbWbO7Xf_i9k2pSylK3owXpFQH0nkHV4pSb0EBlpDCZSjeYpymKlWzoz6mzhVTtrH-kHgUXeEgofqXrPaYAYtlM"/>
+<span class="text-sm font-semibold text-on-surface">Google</span>
+</button>
+<button class="flex items-center justify-center space-x-2 py-3 bg-white/5 hover:bg-white/10 border border-white/5 rounded-xl transition-all">
+<svg class="w-5 h-5 text-white" fill="currentColor" viewbox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.43.372.823 1.102.823 2.222 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>
+<span class="text-sm font-semibold text-on-surface">GitHub</span>
+</button>
+</div>
+<!-- Sign Up Prompt -->
+<p class="text-center mt-10 text-on-surface-variant text-sm">
+                Don't have an account? 
+                <a class="text-primary font-bold hover:underline transition-all" href="#">Create Profile</a>
+</p>
+</div>
+</main>
+<!-- Footer Component Integration (Execution of JSON command) -->
+<footer class="mt-auto w-full z-10">
+<div class="flex flex-col md:flex-row justify-between items-center w-full px-8 py-12 max-w-7xl mx-auto opacity-80 hover:opacity-100 transition-opacity">
+<span class="text-xs uppercase tracking-widest font-['Inter'] text-slate-500">© 2024 ResumeAI. The Luminescent Architect.</span>
+<div class="flex space-x-8 mt-4 md:mt-0">
+<a class="text-xs uppercase tracking-widest font-['Inter'] text-slate-500 hover:text-white transition-opacity" href="#">Privacy Policy</a>
+<a class="text-xs uppercase tracking-widest font-['Inter'] text-slate-500 hover:text-white transition-opacity" href="#">Terms of Service</a>
+<a class="text-xs uppercase tracking-widest font-['Inter'] text-slate-500 hover:text-white transition-opacity" href="#">Security</a>
+</div>
+</div>
+</footer>
+</body></html>

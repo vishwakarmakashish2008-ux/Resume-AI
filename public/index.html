@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ResumeAI — AI-Powered Professional Resume Generator. Build stunning resumes in minutes with intelligent content enhancement.">
+  <title>ResumeAI — AI-Powered Resume Generator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- ─── Animated Background ─── -->
+  <div class="bg-effects">
+    <div class="gradient-orb orb-1"></div>
+    <div class="gradient-orb orb-2"></div>
+    <div class="gradient-orb orb-3"></div>
+    <div class="grid-overlay"></div>
+  </div>
+
+  <!-- ─── Header ─── -->
+  <header id="app-header">
+    <div class="header-inner">
+      <div class="logo" id="logo-link">
+        <div class="logo-icon">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+            <rect width="32" height="32" rx="8" fill="url(#logo-grad)"/>
+            <path d="M8 10h16M8 16h12M8 22h14" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+            <circle cx="24" cy="22" r="4" fill="#34d399" stroke="white" stroke-width="1.5"/>
+            <path d="M22.5 22l1 1 2-2" stroke="white" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+            <defs>
+              <linearGradient id="logo-grad" x1="0" y1="0" x2="32" y2="32">
+                <stop stop-color="#6366f1"/>
+                <stop offset="1" stop-color="#8b5cf6"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <span class="logo-text">Resume<span class="logo-accent">AI</span></span>
+      </div>
+      <nav class="header-nav">
+        <button class="nav-btn active" data-view="builder" id="nav-builder">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+          Builder
+        </button>
+        <button class="nav-btn" data-view="preview" id="nav-preview">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          Preview
+        </button>
+      </nav>
+      <div class="header-actions">
+        <button class="btn-download" id="btn-download-header" title="Download Resume">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ─── Main App ─── -->
+  <main id="app-main">
+    <!-- ─── Builder View ─── -->
+    <div class="view active" id="view-builder">
+      <!-- Progress Bar -->
+      <div class="progress-container" id="progress-container">
+        <div class="progress-bar">
+          <div class="progress-fill" id="progress-fill"></div>
+        </div>
+        <div class="progress-steps" id="progress-steps">
+          <!-- Steps injected by JS -->
+        </div>
+      </div>
+
+      <div class="builder-layout">
+        <!-- Form Side -->
+        <div class="form-panel" id="form-panel">
+          <!-- Step 1: Personal Info -->
+          <section class="form-step active" data-step="1" id="step-personal">
+            <div class="step-header">
+              <div class="step-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              </div>
+              <div>
+                <h2 class="step-title">Personal Information</h2>
+                <p class="step-subtitle">Let's start with your basic details</p>
+              </div>
+            </div>
+            <div class="form-grid">
+              <div class="form-group full-width">
+                <label for="input-name">Full Name *</label>
+                <input type="text" id="input-name" placeholder="e.g. John Doe" required>
+              </div>
+              <div class="form-group full-width">
+                <label for="input-title">Professional Title</label>
+                <input type="text" id="input-title" placeholder="e.g. Senior Software Engineer">
+              </div>
+              <div class="form-group">
+                <label for="input-email">Email *</label>
+                <input type="email" id="input-email" placeholder="john@example.com" required>
+              </div>
+              <div class="form-group">
+                <label for="input-phone">Phone</label>
+                <input type="tel" id="input-phone" placeholder="+1 (555) 123-4567">
+              </div>
+              <div class="form-group full-width">
+                <label for="input-location">Location</label>
+                <input type="text" id="input-location" placeholder="e.g. San Francisco, CA">
+              </div>
+              <div class="form-group">
+                <label for="input-linkedin">LinkedIn</label>
+                <input type="url" id="input-linkedin" placeholder="linkedin.com/in/johndoe">
+              </div>
+              <div class="form-group">
+                <label for="input-github">GitHub / Portfolio</label>
+                <input type="url" id="input-github" placeholder="github.com/johndoe">
+              </div>
+            </div>
+          </section>
+
+          <!-- Step 2: Career Objective -->
+          <section class="form-step" data-step="2" id="step-objective">
+            <div class="step-header">
+              <div class="step-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+              </div>
+              <div>
+                <h2 class="step-title">Career Objective</h2>
+                <p class="step-subtitle">Write freely — our AI will polish it for you</p>
+              </div>
+            </div>
+            <div class="form-grid">
+              <div class="form-group full-width">
+                <label for="input-objective">Your Career Objective / Summary</label>
+                <textarea id="input-objective" rows="5" placeholder="Just write naturally! e.g. 'I want to work as a developer building cool apps and helping teams deliver great products. I know React and Node.js and have 3 years of experience...'"></textarea>
+                <p class="form-hint">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z"/><path d="M12 16v-4M12 8h.01"/></svg>
+                  Don't worry about professional language — our AI will transform this into a polished summary!
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Step 3: Work Experience -->
+          <section class="form-step" data-step="3" id="step-experience">
+            <div class="step-header">
+              <div class="step-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+              </div>
+              <div>
+                <h2 class="step-title">Work Experience</h2>
+                <p class="step-subtitle">Add your work history — describe in your own words</p>
+              </div>
+            </div>
+            <div id="experience-container">
+              <!-- Experience entries injected by JS -->
+            </div>
+            <button class="btn-add" id="btn-add-experience">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              Add Experience
+            </button>
+          </section>
+
+          <!-- Step 4: Education -->
+          <section class="form-step" data-step="4" id="step-education">
+            <div class="step-header">
+              <div class="step-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 2 6 3 6 3s6-1 6-3v-5"/></svg>
+              </div>
+              <div>
+                <h2 class="step-title">Education</h2>
+                <p class="step-subtitle">Add your educational background</p>
+              </div>
+            </div>
+            <div id="education-container">
+              <!-- Education entries injected by JS -->
+            </div>
+            <button class="btn-add" id="btn-add-education">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              Add Education
+            </button>
+          </section>
+
+          <!-- Step 5: Skills -->
+          <section class="form-step" data-step="5" id="step-skills">
+            <div class="step-header">
+              <div class="step-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              </div>
+              <div>
+                <h2 class="step-title">Skills</h2>
+                <p class="step-subtitle">List your technical and soft skills</p>
+              </div>
+            </div>
+            <div class="form-grid">
+              <div class="form-group full-width">
+                <label for="input-skills">Your Skills</label>
+                <textarea id="input-skills" rows="4" placeholder="e.g. JavaScript, React, Node.js, Python, SQL, Team Leadership, Problem Solving, Project Management..."></textarea>
+                <p class="form-hint">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z"/><path d="M12 16v-4M12 8h.01"/></svg>
+                  Separate skills with commas. Our AI will categorize them automatically!
+                </p>
+              </div>
+              <div class="skills-preview" id="skills-preview">
+                <!-- Skills chips preview -->
+              </div>
+            </div>
+          </section>
+
+          <!-- Step 6: Projects -->
+          <section class="form-step" data-step="6" id="step-projects">
+            <div class="step-header">
+              <div class="step-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+              </div>
+              <div>
+                <h2 class="step-title">Projects</h2>
+                <p class="step-subtitle">Showcase your notable projects</p>
+              </div>
+            </div>
+            <div id="projects-container">
+              <!-- Project entries injected by JS -->
+            </div>
+            <button class="btn-add" id="btn-add-project">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              Add Project
+            </button>
+          </section>
+
+          <!-- Step 7: Certifications & Achievements -->
+          <section class="form-step" data-step="7" id="step-extras">
+            <div class="step-header">
+              <div class="step-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+              </div>
+              <div>
+                <h2 class="step-title">Certifications & Achievements</h2>
+                <p class="step-subtitle">Highlight your certifications and accomplishments</p>
+              </div>
+            </div>
+            
+            <h3 class="subsection-title">Certifications</h3>
+            <div id="certifications-container"></div>
+            <button class="btn-add" id="btn-add-certification">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              Add Certification
+            </button>
+
+            <h3 class="subsection-title" style="margin-top: 2rem;">Achievements</h3>
+            <div id="achievements-container"></div>
+            <button class="btn-add" id="btn-add-achievement">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              Add Achievement
+            </button>
+          </section>
+
+          <!-- Step 8: Template Selection -->
+          <section class="form-step" data-step="8" id="step-template">
+            <div class="step-header">
+              <div class="step-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+              </div>
+              <div>
+                <h2 class="step-title">Choose Template</h2>
+                <p class="step-subtitle">Select a professional template for your resume</p>
+              </div>
+            </div>
+            <div class="template-gallery" id="template-gallery">
+              <!-- Templates injected by JS -->
+            </div>
+          </section>
+
+          <!-- Navigation Buttons -->
+          <div class="form-nav" id="form-nav">
+            <button class="btn-secondary" id="btn-prev" disabled>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+              Previous
+            </button>
+            <button class="btn-primary" id="btn-next">
+              Next
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </button>
+            <button class="btn-generate hidden" id="btn-generate">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+              Generate Resume with AI
+            </button>
+          </div>
+        </div>
+
+        <!-- Live Mini Preview -->
+        <div class="mini-preview-panel" id="mini-preview-panel">
+          <div class="mini-preview-header">
+            <h3>Live Preview</h3>
+            <button class="btn-icon" id="btn-expand-preview" title="Expand Preview">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>
+            </button>
+          </div>
+          <div class="mini-preview-content" id="mini-preview-content">
+            <div class="mini-resume-placeholder">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" opacity="0.3"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+              <p>Your resume preview will appear here as you fill in the details</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ─── Preview View ─── -->
+    <div class="view" id="view-preview">
+      <div class="preview-toolbar" id="preview-toolbar">
+        <div class="toolbar-left">
+          <button class="btn-secondary" id="btn-back-to-builder">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+            Back to Builder
+          </button>
+          <div class="template-switcher">
+            <label>Template:</label>
+            <select id="template-select">
+              <option value="modern">Modern</option>
+              <option value="classic">Classic</option>
+              <option value="minimal">Minimal</option>
+            </select>
+          </div>
+        </div>
+        <div class="toolbar-right">
+          <button class="btn-export" id="btn-export-pdf">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            Export PDF
+          </button>
+          <button class="btn-export" id="btn-export-docx">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="M8 8h8M8 12h8M8 16h4"/></svg>
+            Export DOCX
+          </button>
+        </div>
+      </div>
+      <div class="preview-container" id="preview-container">
+        <div class="resume-page" id="resume-page">
+          <!-- Resume HTML rendered here -->
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- ─── Loading Overlay ─── -->
+  <div class="loading-overlay hidden" id="loading-overlay">
+    <div class="loading-content">
+      <div class="loading-spinner">
+        <div class="spinner-ring"></div>
+        <div class="spinner-ring"></div>
+        <div class="spinner-ring"></div>
+      </div>
+      <h3 class="loading-title" id="loading-title">Generating your resume...</h3>
+      <p class="loading-subtitle" id="loading-subtitle">Our AI is enhancing your content</p>
+    </div>
+  </div>
+
+  <!-- ─── Toast Notifications ─── -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- ─── Download Modal ─── -->
+  <div class="modal-overlay hidden" id="download-modal">
+    <div class="modal-card">
+      <button class="modal-close" id="modal-close">&times;</button>
+      <h2 class="modal-title">Download Resume</h2>
+      <p class="modal-subtitle">Choose your preferred format</p>
+      <div class="download-options">
+        <button class="download-option" id="dl-pdf">
+          <div class="dl-icon pdf">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          </div>
+          <span class="dl-format">PDF</span>
+          <span class="dl-desc">Best for sharing & printing</span>
+        </button>
+        <button class="download-option" id="dl-docx">
+          <div class="dl-icon docx">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="M8 8h8M8 12h8M8 16h4"/></svg>
+          </div>
+          <span class="dl-format">DOCX</span>
+          <span class="dl-desc">Editable in Word & Google Docs</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script src="templates.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
